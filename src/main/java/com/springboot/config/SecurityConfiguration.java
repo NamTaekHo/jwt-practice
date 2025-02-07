@@ -98,7 +98,7 @@ public class SecurityConfiguration {
                         // 모든 주문 목록은 모두 접근( 대신 user는 본인 주문 목록만 나오게)
                         .antMatchers(HttpMethod.GET, "/*/orders").permitAll()
                         // 주문 정보 조회는 모두 접근
-                        .antMatchers(HttpMethod.GET, "/*/orders/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/*/orders/**").hasAnyRole("USER", "ADMIN")
                         // 삭제 요청은 유저만
                         .antMatchers(HttpMethod.DELETE, "/*/orders/**").hasRole("USER")
 
